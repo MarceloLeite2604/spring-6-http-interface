@@ -59,8 +59,8 @@ public class MessageService {
     messageClient.delete(id.toString());
   }
 
-  private String retrieveIdFromResponseHeaders(java.net.http.HttpHeaders httpHeaders) {
-    final var location = httpHeaders.firstValue(HttpHeaders.LOCATION)
+  private String retrieveIdFromResponseHeaders(HttpHeaders httpHeaders) {
+    final var location = Optional.ofNullable(httpHeaders.getLocation())
         .orElseThrow(() -> {
           final var exceptionMessage = String.format("Chat service did not return \"%s\" HTTP header on its response.", HttpHeaders.LOCATION);
           return new IllegalStateException(exceptionMessage);

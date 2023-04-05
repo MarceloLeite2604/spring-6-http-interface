@@ -8,10 +8,9 @@ import java.util.Optional;
 @Component
 public class UriUtil {
 
-  public Optional<String> retrieveLastPathSegmentFromUri(String uri) {
+  public Optional<String> retrieveLastPathSegmentFromUri(URI uri) {
 
     return Optional.ofNullable(uri)
-        .map(URI::create)
         .map(URI::getPath)
         .map(path -> path.split("/"))
         .map(pathSegments -> pathSegments[pathSegments.length - 1]);

@@ -1,5 +1,6 @@
 package com.github.marceloleite2604.httpinterface.validation;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -8,9 +9,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
+@RequiredArgsConstructor
 public class Validator {
 
-  private jakarta.validation.Validator validator;
+  private final jakarta.validation.Validator validator;
 
   public void throwExceptionIfNotValid(Object object, Class<?>... groups) {
     final var constraintViolations = validator.validate(object, groups);

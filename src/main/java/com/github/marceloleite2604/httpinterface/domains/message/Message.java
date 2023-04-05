@@ -8,7 +8,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Builder
+@Builder(toBuilder = true)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class Message {
